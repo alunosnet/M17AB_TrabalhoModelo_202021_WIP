@@ -4,5 +4,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!--Body-->
-    <asp:Label ID="Label1" runat="server" Text="Isto é um site"></asp:Label>
+    
 </asp:Content>
