@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Utilizadores\Utilizadores.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Logbook.txt" />
     <Content Include="Public\chartistJS\chartist.css" />
@@ -88,6 +89,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Utilizadores\Utilizadores.aspx.cs">
+      <DependentUpon>Utilizadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\Utilizadores.aspx.designer.cs">
+      <DependentUpon>Utilizadores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classes\BaseDados.cs" />
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\ReCaptcha.cs" />
@@ -105,6 +113,9 @@
     <Compile Include="master_page.Master.designer.cs">
       <DependentUpon>master_page.Master</DependentUpon>
     </Compile>
+    <Compile Include="Models\Emprestimo.cs" />
+    <Compile Include="Models\Livro.cs" />
+    <Compile Include="Models\Utilizador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -129,9 +140,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\" />
+    <Folder Include="Admin\Consultas\" />
+    <Folder Include="Admin\Emprestimos\" />
+    <Folder Include="Admin\Livros\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Public\Images\" />
     <Folder Include="User\" />
   </ItemGroup>

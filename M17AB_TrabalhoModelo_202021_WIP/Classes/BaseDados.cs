@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace M17AB_TrabalhoModelo_1920.Classes
+namespace M17AB_TrabalhoModelo_202021_WIP.Classes
 {
     public class BaseDados
     {

@@ -93,7 +93,7 @@
                         Este site utiliza cookies.
                     <asp:Button runat="server" ID="bt1"
                         CssClass="btn btn-outline-primary float-right"
-                        Text="Aceitar" />
+                        Text="Aceitar" OnClick="bt1_Click" />
                     </div>
                 </footer>
             </div>
