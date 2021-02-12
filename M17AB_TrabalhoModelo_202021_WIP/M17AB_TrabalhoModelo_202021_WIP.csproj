@@ -67,7 +67,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Utilizadores\BloquearUtilizador.aspx" />
+    <Content Include="Admin\Utilizadores\EditarUtilizador.aspx" />
+    <Content Include="Admin\Utilizadores\HistoricoUtilizador.aspx" />
+    <Content Include="Admin\Utilizadores\RemoverUtilizador.aspx" />
     <Content Include="Admin\Utilizadores\Utilizadores.aspx" />
+    <Content Include="App_Data\bd.mdf" />
+    <Content Include="App_Data\bd_log.ldf">
+      <DependentUpon>bd.mdf</DependentUpon>
+    </Content>
     <Content Include="index.aspx" />
     <Content Include="Logbook.txt" />
     <Content Include="Public\chartistJS\chartist.css" />
@@ -89,6 +97,34 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Utilizadores\BloquearUtilizador.aspx.cs">
+      <DependentUpon>BloquearUtilizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\BloquearUtilizador.aspx.designer.cs">
+      <DependentUpon>BloquearUtilizador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\EditarUtilizador.aspx.cs">
+      <DependentUpon>EditarUtilizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\EditarUtilizador.aspx.designer.cs">
+      <DependentUpon>EditarUtilizador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\HistoricoUtilizador.aspx.cs">
+      <DependentUpon>HistoricoUtilizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\HistoricoUtilizador.aspx.designer.cs">
+      <DependentUpon>HistoricoUtilizador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\RemoverUtilizador.aspx.cs">
+      <DependentUpon>RemoverUtilizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Utilizadores\RemoverUtilizador.aspx.designer.cs">
+      <DependentUpon>RemoverUtilizador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Utilizadores\Utilizadores.aspx.cs">
       <DependentUpon>Utilizadores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,7 +179,6 @@
     <Folder Include="Admin\Consultas\" />
     <Folder Include="Admin\Emprestimos\" />
     <Folder Include="Admin\Livros\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Public\Images\" />
     <Folder Include="User\" />
   </ItemGroup>
