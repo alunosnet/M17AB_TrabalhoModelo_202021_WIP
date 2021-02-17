@@ -11,6 +11,30 @@ namespace M17AB_TrabalhoModelo_202021_WIP
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Testar se tem login para esconder a divlogin
+            
+            //ordenar os livros?
+
+            //atualizar grelha livros
+
+        }
+
+        protected void btLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string email = tbEmail.Text;
+                string password = tbPassword.Text;
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void btRecuperar_Click(object sender, EventArgs e)
+        {
 
         }
     }

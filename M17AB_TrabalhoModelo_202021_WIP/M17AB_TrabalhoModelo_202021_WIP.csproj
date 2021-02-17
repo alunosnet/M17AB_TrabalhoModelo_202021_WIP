@@ -80,6 +80,7 @@
     <Content Include="App_Data\bd_log.ldf">
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
+    <Content Include="DetalhesLivro.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Logbook.txt" />
     <Content Include="Public\chartistJS\chartist.css" />
@@ -98,6 +99,8 @@
     <Content Include="Public\js\codigo.js" />
     <Content Include="Public\js\jquery.min.js" />
     <Content Include="Public\js\popper.min.js" />
+    <Content Include="RecuperarPassword.aspx" />
+    <Content Include="Registo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +170,14 @@
     <Compile Include="Classes\BaseDados.cs" />
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\ReCaptcha.cs" />
+    <Compile Include="Classes\UserLogin.cs" />
+    <Compile Include="DetalhesLivro.aspx.cs">
+      <DependentUpon>DetalhesLivro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalhesLivro.aspx.designer.cs">
+      <DependentUpon>DetalhesLivro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +196,20 @@
     <Compile Include="Models\Livro.cs" />
     <Compile Include="Models\Utilizador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecuperarPassword.aspx.cs">
+      <DependentUpon>RecuperarPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarPassword.aspx.designer.cs">
+      <DependentUpon>RecuperarPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registo.aspx.cs">
+      <DependentUpon>Registo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registo.aspx.designer.cs">
+      <DependentUpon>Registo.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="master_page.Master" />

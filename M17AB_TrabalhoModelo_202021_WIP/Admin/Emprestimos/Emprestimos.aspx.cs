@@ -1,6 +1,7 @@
 ﻿using M17AB_TrabalhoModelo_202021_WIP.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
@@ -65,7 +66,19 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
         //executado para cada linha adicionada à grid
         private void GvEmprestimos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DateTime datadevolve = DateTime.Parse(e.Row.Cells[6].Text);
+                int estado = int.Parse(e.Row.Cells[7].Text);
+                if(estado!=0 && datadevolve < DateTime.Now)
+                {
+                    e.Row.Cells[1].Controls[0].Visible = true;
+                }
+                else
+                {
+                    e.Row.Cells[1].Controls[0].Visible = false;
+                }
+            }
         }
 
         //event listener do click nos botões de comando da grid
@@ -79,16 +92,25 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
             //idemprestimo
             int idEmprestimo = int.Parse(gvEmprestimos.Rows[linha].Cells[2].Text);
 
+            Emprestimo emprestimo = new Emprestimo();
             if (e.CommandName == "alterar")
             {
-                Emprestimo emprestimo = new Emprestimo();
                 emprestimo.alterarEstadoEmprestimo(idEmprestimo);
                 atualizarDDLivros();
                 atualizarGrid();
             }
             if (e.CommandName == "email")
             {
-
+                DataTable dados = emprestimo.devolveDadosEmprestimo(idEmprestimo);
+                int idUtilizador = int.Parse(dados.Rows[0]["idutilizador"].ToString());
+                Utilizador utilizador = new Utilizador();
+                DataTable dadosUtilizador = utilizador.devolveDadosUtilizador(idUtilizador);
+                string email = dadosUtilizador.Rows[0]["email"].ToString();
+                string assunto = "Livro emprestado fora do prazo";
+                string mensagem = "Caro leitor deve devolver o livro que tem emprestado.";
+                string minhapassword = ConfigurationManager.AppSettings["MinhaPassword"].ToString();
+                string meuEmail = ConfigurationManager.AppSettings["MeuEmail"].ToString();
+                Helper.enviarMail(meuEmail, minhapassword, email, assunto, mensagem);
             }
         }
 
@@ -145,7 +167,6 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
                 DateTime dataDevolve = DateTime.Parse(tbData.Text);
                 emprestimo.adicionarEmprestimo(idLivro, idUtilizador, dataDevolve);
 
-                atualizarGrid();
                 atualizarDDLivros();
                 atualizarDDUtilizadores();
                 lbErro.Text = "Empréstimo registado com sucesso.";
@@ -153,6 +174,9 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
             {
                 lbErro.Text = "Ocorreu o seguinte erro: " + erro.Message;
                 lbErro.CssClass = "alert alert-danger";
+            }
+            finally { 
+                atualizarGrid(); 
             }
         }
     }
