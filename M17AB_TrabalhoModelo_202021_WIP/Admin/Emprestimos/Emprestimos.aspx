@@ -3,8 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Empréstimos</h2>
-    <asp:CheckBox AutoPostBack="true" OnCheckedChanged="cbEmprestimos_CheckedChanged" CssClass="form-control" ID="cbEmprestimos" runat="server" />
-    Só empréstimos por concluir
+    <div class="form-check form-check-inline">
+        <asp:CheckBox AutoPostBack="true" OnCheckedChanged="cbEmprestimos_CheckedChanged" CssClass="form-check-input" ID="cbEmprestimos" runat="server" />
+        <label class="form-check-label" for="ContentPlaceHolder1_cbEmprestimos">Só empréstimos por concluir</label>
+    </div>
     <asp:GridView CssClass="table" ID="gvEmprestimos" runat="server"></asp:GridView>
     <h2>Adicionar Empréstimos</h2>
     Livro:<asp:DropDownList CssClass="form-control" ID="ddLivros" runat="server"></asp:DropDownList>
