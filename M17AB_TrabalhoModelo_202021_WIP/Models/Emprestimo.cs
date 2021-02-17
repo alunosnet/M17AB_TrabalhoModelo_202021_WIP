@@ -30,6 +30,9 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Models
 
             try
             {
+                //verificar disponibilidade do livro
+                if (dados.Rows[0]["estado"].ToString() != "1")
+                    throw new Exception("Livro não está disponível");
                 //alterar estado do livro
                 sql = "UPDATE Livros SET estado=@estado WHERE nlivro=@nlivro";
                 List<SqlParameter> parametrosUpdate = new List<SqlParameter>()

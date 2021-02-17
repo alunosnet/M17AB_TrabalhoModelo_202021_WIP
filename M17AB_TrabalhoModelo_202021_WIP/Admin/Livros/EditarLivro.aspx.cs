@@ -13,7 +13,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Validar a sessão do utilizador
+            //TODO:Validar a sessão do utilizador
 
             if (IsPostBack) return;
             //carregar os dados do livro a editar
@@ -71,13 +71,10 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
 
                 //validar preco (4,2)
                 Decimal preco = 0;
-                if (Decimal.TryParse(tbPreco.Text, out preco) == false)
+                if (Decimal.TryParse(tbPreco.Text.Replace('.',','), out preco) == false)
                     throw new Exception("O preço indicado não é válido. Deve ser um valor numérico.");
-
                 if (preco < 0 || preco >= 100)
                     throw new Exception("O preço não é válido. Tem de estar entre 0 e 99,99");
-
-
                 //validar o autor (100)
                 string autor = tbAutor.Text.Trim();
                 if (autor == String.Empty || autor.Length < 2 ||
@@ -93,8 +90,8 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
                 Livro livro = new Livro();
                 livro.nlivro = nlivro;
                 livro.nome = tbNome.Text;
-                livro.ano = int.Parse(tbAno.Text);
-                livro.preco = decimal.Parse(tbPreco.Text);
+                livro.ano = iano;
+                livro.preco =preco;
                 livro.tipo = tbTipo.Text;
                 livro.autor = tbAutor.Text;
                 livro.data_aquisicao = dataAquisicao;
@@ -119,7 +116,9 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
                 livro.atualizaLivro();
                 //mostrar mensagem e redirecionar
                 lbErro.Text = "O livro foi atualizado com sucesso.";
+                lbErro.CssClass = "alert alert-sucess";
                 bt1.Enabled = false;
+                bt1.Attributes.Add("disabled","true");
                 //redirecionar para livros
                 ScriptManager.RegisterStartupScript(this,
                     typeof(Page), "Redirecionar",

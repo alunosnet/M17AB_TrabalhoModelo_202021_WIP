@@ -14,7 +14,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Validar a sessão do utilizador
+            //TODO:Validar a sessão do utilizador
 
             try
             {
@@ -45,6 +45,8 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
                 ficheiro = Server.MapPath(ficheiro);
                 File.Delete(ficheiro);
                 lbErro.Text = "Livro removido com sucesso.";
+                btRemover.Enabled = false;
+                btRemover.Attributes.Add("disabled", "true");
             }
             catch (Exception erro)
             {
