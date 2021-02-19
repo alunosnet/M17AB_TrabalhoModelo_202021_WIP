@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master_page.Master" AutoEventWireup="true" CodeBehind="Registo.aspx.cs" Inherits="M17AB_TrabalhoModelo_202021_WIP.Registo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Email:<asp:TextBox CssClass="form-control" MaxLength="100" TextMode="Email" ID="tbEmail" runat="server"></asp:TextBox>
@@ -12,5 +13,5 @@
     <div class="g-recaptcha" data-sitekey="6Lc1vvoSAAAAAFjyIsG88_b-SoYcW5n89amtzucB"></div>
     <!--Registar-->
     <asp:Button runat="server" ID="btRegistar" Text="Registar"
-        CssClass="btn btn-info" OnClick="" />
+        CssClass="btn btn-info" OnClick="btRegistar_Click" />
 </asp:Content>
