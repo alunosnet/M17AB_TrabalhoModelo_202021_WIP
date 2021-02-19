@@ -1,5 +1,7 @@
-﻿using System;
+﻿using M17AB_TrabalhoModelo_202021_WIP.Classes;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,10 +27,24 @@ namespace M17AB_TrabalhoModelo_202021_WIP
             {
                 string email = tbEmail.Text;
                 string password = tbPassword.Text;
-
+                UserLogin userLogin = new UserLogin();
+                DataTable dados = userLogin.VerificaLogin(email, password);
+                if (dados == null || dados.Rows.Count == 0)
+                    throw new Exception("O login falhou.");
+                //inicar sessão
+                Session["nome"] = dados.Rows[0]["nome"].ToString();
+                Session["id"] = dados.Rows[0]["id"].ToString();
+                Session["perfil"] = dados.Rows[0]["perfil"].ToString();
+                //autorização
+                if (Session["perfil"].ToString() == "0")
+                    Response.Redirect("~/Admin/Admin.aspx");
+                if (Session["perfil"].ToString() == "1")
+                    Response.Redirect("~/User/User.aspx");
             }
             catch
             {
+                lbErro.Text = "Login falhou. Tente novamente.";
+                lbErro.CssClass = "alert alert-danger";
 
             }
         }

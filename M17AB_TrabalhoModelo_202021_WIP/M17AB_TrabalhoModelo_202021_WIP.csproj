@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Admin.aspx" />
     <Content Include="Admin\Emprestimos\Emprestimos.aspx" />
     <Content Include="Admin\Livros\EditarLivro.aspx" />
     <Content Include="Admin\Livros\Livros.aspx" />
@@ -83,6 +84,7 @@
     <Content Include="DetalhesLivro.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Logbook.txt" />
+    <Content Include="logout.aspx" />
     <Content Include="Public\chartistJS\chartist.css" />
     <Content Include="Public\chartistJS\chartist.js" />
     <Content Include="Public\css\bootstrap-grid.css" />
@@ -101,9 +103,19 @@
     <Content Include="Public\js\popper.min.js" />
     <Content Include="RecuperarPassword.aspx" />
     <Content Include="Registo.aspx" />
+    <Content Include="User\Emprestimos\Emprestimos.aspx" />
+    <Content Include="User\Emprestimos\Historico.aspx" />
+    <Content Include="User\User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Emprestimos\Emprestimos.aspx.cs">
       <DependentUpon>Emprestimos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +197,13 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="master_page.Master.cs">
       <DependentUpon>master_page.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,6 +228,27 @@
     </Compile>
     <Compile Include="Registo.aspx.designer.cs">
       <DependentUpon>Registo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Emprestimos\Emprestimos.aspx.cs">
+      <DependentUpon>Emprestimos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Emprestimos\Emprestimos.aspx.designer.cs">
+      <DependentUpon>Emprestimos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\Emprestimos\Historico.aspx.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\Emprestimos\Historico.aspx.designer.cs">
+      <DependentUpon>Historico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -235,7 +275,6 @@
   <ItemGroup>
     <Folder Include="Admin\Consultas\" />
     <Folder Include="Public\Images\" />
-    <Folder Include="User\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

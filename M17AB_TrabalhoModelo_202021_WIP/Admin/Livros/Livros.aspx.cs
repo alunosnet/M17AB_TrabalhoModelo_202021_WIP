@@ -13,7 +13,10 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Livros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Validar a sessão do utilizador
+            //validar a sessão do utilizador
+            if (Session["perfil"] == null ||
+                Session["perfil"].ToString() != "0")
+                Response.Redirect("~/Index.aspx");
 
             ConfigurarGrid();
 
