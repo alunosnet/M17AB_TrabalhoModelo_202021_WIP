@@ -13,5 +13,10 @@ namespace M17AB_TrabalhoModelo_202021_WIP
         {
 
         }
+
+        protected void btAlterarPassword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
