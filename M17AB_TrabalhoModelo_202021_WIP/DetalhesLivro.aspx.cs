@@ -38,7 +38,20 @@ namespace M17AB_TrabalhoModelo_202021_WIP
 
         protected void btReservar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                int idlivro = int.Parse(Request["id"].ToString());
+                int idutilizador = int.Parse(Session["id"].ToString());
+                Emprestimo emprestimo = new Emprestimo();
+                emprestimo.adicionarReserva(idlivro, idutilizador, DateTime.Now.AddDays(7));
+                lbErro.Text = "Livro reservado com sucesso";
+                ScriptManager.RegisterStartupScript(this, typeof(Page),
+                    "Redirecionar", "returnMain('/index.aspx')",true);
+            }
+            catch
+            {
+                Response.Redirect("/index.aspx");
+            }
         }
     }
 }

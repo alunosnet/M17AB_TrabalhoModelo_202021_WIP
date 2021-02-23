@@ -8,7 +8,8 @@
     <asp:Label ID="lbAno" runat="server" Text=""></asp:Label><br />
     <asp:Label ID="lbPreco" runat="server" Text=""></asp:Label><br />
     <%if (Session["perfil"] != null && Session["perfil"].Equals("1")){ %>
-    <asp:Button ID="btReservar" runat="server" Text="Reservar" OnClick="btReservar_Click" />
+    <asp:Button CssClass="btn btn-danger" ID="btReservar" runat="server" Text="Reservar" OnClick="btReservar_Click" />
+    <asp:Label runat="server" ID="lbErro" />
     <% } %>
     <br /><a href="/index.aspx">Voltar</a>
 </asp:Content>
