@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Image ID="imgCapa" runat="server" /><br />
+    <asp:Image CssClass="img-fluid" ID="imgCapa" runat="server" /><br />
     <asp:Label ID="lbNome" runat="server" Text=""></asp:Label><br />
     <asp:Label ID="lbAutor" runat="server" Text=""></asp:Label><br />
     <asp:Label ID="lbAno" runat="server" Text=""></asp:Label><br />

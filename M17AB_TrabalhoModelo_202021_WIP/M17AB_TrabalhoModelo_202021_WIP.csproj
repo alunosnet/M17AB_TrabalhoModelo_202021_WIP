@@ -68,10 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Admin.aspx" />
+    <Content Include="Admin\Consultas\Consultas.aspx" />
     <Content Include="Admin\Emprestimos\Emprestimos.aspx" />
     <Content Include="Admin\Livros\EditarLivro.aspx" />
     <Content Include="Admin\Livros\Livros.aspx" />
     <Content Include="Admin\Livros\RemoverLivro.aspx" />
+    <Content Include="Admin\Servicos.asmx" />
     <Content Include="Admin\Utilizadores\BloquearUtilizador.aspx" />
     <Content Include="Admin\Utilizadores\EditarUtilizador.aspx" />
     <Content Include="Admin\Utilizadores\HistoricoUtilizador.aspx" />
@@ -116,6 +118,13 @@
     <Compile Include="Admin\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Consultas\Consultas.aspx.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Consultas\Consultas.aspx.designer.cs">
+      <DependentUpon>Consultas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Emprestimos\Emprestimos.aspx.cs">
       <DependentUpon>Emprestimos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -143,6 +152,10 @@
     </Compile>
     <Compile Include="Admin\Livros\RemoverLivro.aspx.designer.cs">
       <DependentUpon>RemoverLivro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Servicos.asmx.cs">
+      <DependentUpon>Servicos.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Admin\Utilizadores\BloquearUtilizador.aspx.cs">
       <DependentUpon>BloquearUtilizador.aspx</DependentUpon>
@@ -273,7 +286,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Consultas\" />
     <Folder Include="Public\Images\" />
   </ItemGroup>
   <PropertyGroup>
