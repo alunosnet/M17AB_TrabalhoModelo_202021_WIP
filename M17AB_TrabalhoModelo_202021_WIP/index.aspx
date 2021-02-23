@@ -11,7 +11,13 @@
         <asp:Button CssClass="btn btn-danger" ID="btRecuperar" runat="server" Text="Recuperar password" OnClick="btRecuperar_Click" />
     </div>
     <!--Pesquisa-->
-
+    <div>
+        <h1>Livros Online</h1>
+        <div>
+            <asp:TextBox ID="tbPesquisa" runat="server"></asp:TextBox>
+            <asp:Button runat="server" ID="btPesquisar" Text="Pesquisar" OnClick="btPesquisar_Click" />
+        </div>
+    </div>
     <!--Lista dos livros-->
-
+    <div id="divLivros" runat="server"></div>
 </asp:Content>

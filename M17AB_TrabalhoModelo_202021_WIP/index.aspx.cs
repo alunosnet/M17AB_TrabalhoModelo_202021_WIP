@@ -16,11 +16,21 @@ namespace M17AB_TrabalhoModelo_202021_WIP
         protected void Page_Load(object sender, EventArgs e)
         {
             //Testar se tem login para esconder a divlogin
-            
+            if (Session["perfil"] != null)
+                divLogin.Visible = false;
+
             //ordenar os livros?
-
+            int? ordenar = 0;
+            try
+            {
+                ordenar = int.Parse(Request["ordena"].ToString());
+            }
+            catch
+            {
+                ordenar = null;
+            }
             //atualizar grelha livros
-
+            atualizaListaLivros(null, ordenar);
         }
 
         protected void btLogin_Click(object sender, EventArgs e)
@@ -78,6 +88,58 @@ namespace M17AB_TrabalhoModelo_202021_WIP
             {
 
             }
+        }
+
+        protected void btPesquisar_Click(object sender, EventArgs e)
+        {
+            atualizaListaLivros(tbPesquisa.Text);
+        }
+
+        private void atualizaListaLivros(string pesquisa=null,int? ordena=null)
+        {
+            Livro livro = new Livro();
+            DataTable dados;
+            if(pesquisa==null)
+            {
+                //se existir o cookie ultimolivro listar os livros do mesmo autor
+                HttpCookie httpCookie = Request.Cookies["ultimolivro"];
+                if (httpCookie == null)
+                    dados = livro.listaLivrosDisponiveis(ordena);
+                else
+                    dados = livro.listaLivrosDoAutor(Server.UrlDecode(httpCookie.Value));
+            }
+            else
+            {
+                dados = livro.listaLivrosDisponiveis(pesquisa, ordena);
+            }
+            gerarIndex(dados);
+        }
+
+        private void gerarIndex(DataTable dados)
+        {
+            if(dados==null || dados.Rows.Count == 0)
+            {
+                divLivros.InnerHtml = "";
+                return;
+            }
+            string grelha = "<div class='container-fluid'>";
+            grelha += "<div class='row'>";
+            foreach (DataRow livro in dados.Rows)
+            {
+                grelha += "<div class='col'>";
+                grelha += "<img src='/Public/Images/" + livro[0].ToString() +
+                    ".jpg' class='img-fluid'/>";
+                grelha += "<p/><span class='stat-title'>" + livro[1].ToString()
+                    + "</span>";
+                grelha += "<span class='stat-title'>" +
+                    String.Format(" | {0:C}", Decimal.Parse(livro["preco"].ToString()))
+                    + "</span>";
+                grelha += "<br/><a href='detalheslivro.aspx?id=" + livro[0].ToString()
+                    + "'>Detalhes</a>";
+                grelha += "</div>";
+            }
+            grelha += "</div></div>";
+            divLivros.InnerHtml = grelha;
         }
     }
 }
