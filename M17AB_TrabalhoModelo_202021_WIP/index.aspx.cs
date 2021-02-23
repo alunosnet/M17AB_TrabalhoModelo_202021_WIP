@@ -64,7 +64,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP
                     throw new Exception("Erro no email");
                 Guid g = Guid.NewGuid();
                 utilizador.recuperarPassword(email, g.ToString());
-                string mensagem = "Clique no link para recuperar a sua password.\n";
+                string mensagem = "Clique no link para recuperar a sua password.<br/>";
                 mensagem += "<a href='http://" + Request.Url.Authority + "/recuperarPassword.aspx?";
                 mensagem += "id=" + Server.UrlEncode(g.ToString()) + "'>Clique aqui</a>";
                 string meuemail = ConfigurationManager.AppSettings["MeuEmail"].ToString();
