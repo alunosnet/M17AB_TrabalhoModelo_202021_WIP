@@ -63,6 +63,7 @@
 
                 function OnErrorCall_(response) {
                     alert("Whoops something went wrong!");
+                    console.log(response);
                 }
                 e.preventDefault();
             });
