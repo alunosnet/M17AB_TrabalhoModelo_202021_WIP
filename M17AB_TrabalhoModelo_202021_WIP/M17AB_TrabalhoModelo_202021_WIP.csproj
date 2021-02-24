@@ -84,6 +84,7 @@
       <DependentUpon>bd.mdf</DependentUpon>
     </Content>
     <Content Include="DetalhesLivro.aspx" />
+    <Content Include="Erros.aspx" />
     <Content Include="index.aspx" />
     <Content Include="Logbook.txt" />
     <Content Include="logout.aspx" />
@@ -202,6 +203,13 @@
     </Compile>
     <Compile Include="DetalhesLivro.aspx.designer.cs">
       <DependentUpon>DetalhesLivro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Erros.aspx.cs">
+      <DependentUpon>Erros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Erros.aspx.designer.cs">
+      <DependentUpon>Erros.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
