@@ -47,11 +47,16 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Consultas
                             GROUP BY Utilizadores.id,Utilizadores.Nome
                             ORDER BY count(idutilizador) DESC";
                     break;
-                //1-Top de livros mais requisitados do último mês
+                //Top de livros mais requisitados do último mês
                 case 2:
-                    sql = @"";
+                    sql = @"SELECT TOP 3 nome AS [Livro], COUNT(emprestimos.nlivro) AS [Nº de Requisições] 
+                            FROM Livros, emprestimos
+                            WHERE Livros.nlivro = emprestimos.nlivro 
+                                AND DATEDIFF(DAY, emprestimos.data_emprestimo, GETDATE()) < 30
+                            GROUP BY Livros.nlivro,Livros.nome
+                            ORDER BY COUNT(emprestimos.nlivro) DESC";
                     break;
-                //2-Lista de utilizadores com livros fora de prazo 
+                //Lista de utilizadores com livros fora de prazo 
                 case 3:
                     sql = @"SELECT utilizadores.nome as [Nome do Leitor],livros.nome as [Nome Livro],
                             data_emprestimo,data_devolve,DATEDIFF(DAY,emprestimos.data_devolve,getdate()) as [Dias fora de prazo]
@@ -62,45 +67,61 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Consultas
                                 ON emprestimos.idutilizador=utilizadores.id 
                             WHERE DATEDIFF(DAY,emprestimos.data_devolve,getdate()) >= 1 AND emprestimos.estado = 1";
                     break;
-                //3-Livros da última semana - novidades 
+                //Livros da última semana - novidades 
                 case 4:
-                    sql = @"";
+                    sql = @"SELECT nome
+                            FROM Livros
+                            WHERE DATEDIFF(DAY,data_aquisicao,GETDATE()) <= 7";
                     break;
-                //4-Tempo médio de empréstimo 
+                //Tempo médio de empréstimo 
                 case 5:
-                    sql = @"";
+                    sql = @"SELECT AVG(datediff(day, data_emprestimo, data_devolve)) as [Média de duração dos Empréstimos]
+                            FROM Emprestimos";
                     break;
-                //5-Nº de livros por autor
+                //Nº de livros por autor
                 case 6:
-                    sql = @"";
+                    sql = @"SELECT autor, count(nlivro) as [Nrº de livros] 
+                            FROM Livros 
+                            GROUP BY autor";
                     break;
-                //6- Nº de utilizadores bloqueados
+                //Nº de utilizadores bloqueados
                 case 7:
-                    sql = @"";
+                    sql = @"SELECT count(*) as [Nº de utilizadores bloqueados] 
+                            FROM Utilizadores
+                            WHERE estado = 0";
                     break;
-                //7-Nº de tipos de livro por utilizador
+                //Nº de tipos de livro por utilizador
                 case 8:
-                    sql = @"";
+                    sql = @"SELECT utilizadores.nome, Livros.tipo, count(*) as [Nº de Empréstimos] 
+                            FROM utilizadores
+                            INNER JOIN emprestimos on utilizadores.id=emprestimos.idutilizador
+                            INNER JOIN Livros on emprestimos.nlivro=Livros.nlivro
+                            GROUP BY utilizadores.id,utilizadores.nome,Livros.tipo
+                            ORDER BY utilizadores.id";
                     break;
-                //8-Nº de empréstimos por mês
+                //Nº de empréstimos por mês
                 case 9:
-                    sql = @"";
+                    sql = @"SELECT MONTH(data_emprestimo) as [Mês],Count(nemprestimo) as [Nº de empréstimo] 
+                            FROM emprestimos
+                            GROUP BY MONTH(data_emprestimo)";
                     break;
-                //9-Lista dos utilizadores que requisitaram o livro mais caro
+                //Lista dos utilizadores que requisitaram o livro mais caro
                 case 10:
-                    sql = @"SELECT utilizadores.nome as [Nome dos Utilizadores], livros.nome as [Nome do Livro], max(livros.preco) as [Preço] FROM utilizadores
-                            INNER JOIN emprestimos on utilizadores.id = emprestimos.idutilizador
-                            INNER JOIN livros ON emprestimos.nlivro = livros.nlivro 
-                            GROUP BY utilizadores.nome, livros.nome
-                            ORDER BY max(livros.preco) DESC";
+                    sql = @"SELECT DISTINCT Utilizadores.nome 
+                            FROM utilizadores
+                            INNER JOIN emprestimos on emprestimos.idutilizador = utilizadores.id
+                            WHERE emprestimos.nlivro = (SELECT TOP 1 livros.nlivro FROM livros ORDER BY preco DESC)";
                     break;
-                //10-Lista dos livros cujo preço é superior à média
+                //Lista dos livros cujo preço é superior à média
                 case 11:
-                    sql = @"";
+                    sql = @"SELECT * FROM Livros WHERE preco>(SELECT AVG(preco) FROM Livros)";
                     break;
                 //11- Lista dos utilizadores com a mesma password
                 case 12:
-                    sql = @"";
+                    sql = @"SELECT Nome, 
+                                (SELECT count(*) FROM Utilizadores as UT WHERE U.password=UT.password)
+                            as [Nº de utilizadores com a mesma password]
+                            FROM Utilizadores as U";
                     break;
             }
             BaseDados bd = new BaseDados();
