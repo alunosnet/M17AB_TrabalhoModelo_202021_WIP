@@ -84,7 +84,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
             }
             //adicionar um botão na mesma coluna
             LinkButton btEmail = new LinkButton();
-            btEmail.ControlStyle.CssClass = "btn btn-info";
+            btEmail.ControlStyle.CssClass = "btn btn-danger";
             btEmail.Text = "Email";
             btEmail.CommandName = "email";
             e.Row.Cells[0].Controls.Add(btEmail);
