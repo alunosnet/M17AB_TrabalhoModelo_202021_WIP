@@ -81,13 +81,15 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
                 {
                     e.Row.Cells[0].Controls[0].Visible = false;             //era 1
                 }
-            }
+           
             //adicionar um botão na mesma coluna
             LinkButton btEmail = new LinkButton();
             btEmail.ControlStyle.CssClass = "btn btn-danger";
             btEmail.Text = "Email";
             btEmail.CommandName = "email";
+            //btEmail.PostBackUrl = "./emprestimos/empresitoblabla.asp?id=" + e.Row.Cells[1].Text;
             e.Row.Cells[0].Controls.Add(btEmail);
+            }
         }
 
         //event listener do click nos botões de comando da grid
@@ -99,7 +101,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
             //linha
             int linha = int.Parse(e.CommandArgument as string);
             //idemprestimo
-            int idEmprestimo = int.Parse(gvEmprestimos.Rows[linha].Cells[2].Text);
+            int idEmprestimo = int.Parse(gvEmprestimos.Rows[linha].Cells[1].Text);  //era 2
 
             Emprestimo emprestimo = new Emprestimo();
             if (e.CommandName == "alterar")
