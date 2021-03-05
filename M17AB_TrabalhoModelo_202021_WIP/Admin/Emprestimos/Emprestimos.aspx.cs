@@ -71,17 +71,23 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                DateTime datadevolve = DateTime.Parse(e.Row.Cells[6].Text);
-                int estado = int.Parse(e.Row.Cells[7].Text);
+                DateTime datadevolve = DateTime.Parse(e.Row.Cells[5].Text); //era 6
+                int estado = int.Parse(e.Row.Cells[6].Text);                //era 7
                 if(estado!=0 && datadevolve < DateTime.Now)
                 {
-                    e.Row.Cells[1].Controls[0].Visible = true;
+                    e.Row.Cells[0].Controls[0].Visible = true;              //era 1
                 }
                 else
                 {
-                    e.Row.Cells[1].Controls[0].Visible = false;
+                    e.Row.Cells[0].Controls[0].Visible = false;             //era 1
                 }
             }
+            //adicionar um botão na mesma coluna
+            LinkButton btEmail = new LinkButton();
+            btEmail.ControlStyle.CssClass = "btn btn-info";
+            btEmail.Text = "Email";
+            btEmail.CommandName = "email";
+            e.Row.Cells[0].Controls.Add(btEmail);
         }
 
         //event listener do click nos botões de comando da grid
@@ -147,17 +153,18 @@ namespace M17AB_TrabalhoModelo_202021_WIP.Admin.Emprestimos
             btEstado.CommandName = "alterar";
             gvEmprestimos.Columns.Add(btEstado);
             //enviar o email
-            ButtonField btEmail = new ButtonField();
+          /*  ButtonField btEmail = new ButtonField();
             btEmail.HeaderText = "Notificar";
             btEmail.Text = "Email";
             btEmail.ButtonType = ButtonType.Button;
             btEmail.ControlStyle.CssClass= "btn btn-danger";
             btEmail.CommandName = "email";
-            gvEmprestimos.Columns.Add(btEmail);
+            gvEmprestimos.Columns.Add(btEmail);*/
 
             gvEmprestimos.DataSource = dados;
             gvEmprestimos.AutoGenerateColumns = true;
             gvEmprestimos.DataBind();
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
