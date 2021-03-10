@@ -13,6 +13,7 @@ namespace M17AB_TrabalhoModelo_202021_WIP
 {
     public partial class index : System.Web.UI.Page
     {
+        //ocorre antes do page_load da master page
         protected void Page_Load(object sender, EventArgs e)
         {
             //Testar se tem login para esconder a divlogin
