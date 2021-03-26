@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!--Login-->
-    <div runat="server" id="divLogin" class="float-right col-sm-3 table-bordered divLogin" style="z-index:9999">
+    <div runat="server" id="divLogin" class="float-right col-sm-3 table-bordered divLogin" style="z-index:1">
         Email:<asp:TextBox ID="tbEmail" TextMode="Email" CssClass="form-control" runat="server"></asp:TextBox>
         Password:<asp:TextBox ID="tbPassword" TextMode="Password" CssClass="form-control" runat="server"></asp:TextBox>
         <asp:Label ID="lbErro" runat="server" Text=""></asp:Label>
